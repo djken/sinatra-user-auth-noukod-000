@@ -18,6 +18,7 @@ class ApplicationController < Sinatra::Base
 
   # responsible for handling the POST request that is sent when a user hits 'submit' on the sign-up form
   post '/registrations' do
+    puts params
     @user = User.new(name: params["name"], email: params["email"], password: params["password"])
     @user.save
     session[:user_id] = @user.id
